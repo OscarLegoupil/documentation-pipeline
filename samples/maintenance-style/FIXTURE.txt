@@ -1,0 +1,1 @@
+Hand-authored synthetic artifacts; this sample does not certify Copilot integration or semantic review.

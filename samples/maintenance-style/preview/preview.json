@@ -1,0 +1,28 @@
+{
+  "docx_hash": "b8ad336620b0c8794c956115c39f1e2bfce3780c5da0d13a4418ea8c80f82fab",
+  "pages": [
+    "page-001.png",
+    "page-002.png",
+    "page-003.png",
+    "page-004.png",
+    "page-005.png",
+    "page-006.png",
+    "page-007.png",
+    "page-008.png"
+  ],
+  "rendered": true,
+  "image_review": "all-pages-inspected",
+  "human_approval": "not-assigned",
+  "inspected_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "reviewer": "build-agent",
+  "notes": "All eight final page images inspected. Readable cover, linked contents, headings, tables with repeated headers, Unicode, long paths, code, diagram and evidence notes; no visible clipping or overlap. Incremental sample also has a clear Incomplete draft label and subsystem progress page. LibreOffice rendering; human approval not assigned."
+}

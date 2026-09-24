@@ -1,0 +1,5 @@
+# Hierarchical overview synthesis · version 1
+
+Read only the bounded child summaries. They retain task/fact IDs for retrieval; they are not original evidence. Request bounded accepted facts via lookup and underlying source via evidence when needed. Output short sections with cited blocks using the same schema and `[source](fact:ID)` convention as write tasks. Preserve key IDs in your own summary so parent levels can retrieve them. Never concatenate all extraction sheets/source into this task.
+
+For an intermediate level, summarize the group's maintenance responsibilities, public boundaries and supported flows. For a root, provide a concise system overview: evidenced purpose, architectural connections and end-to-end flows; cross-cutting constraints, supported development/build/test/deployment guidance, and consequential knowledge gaps. The engine supplies subsystem/entry-point/component catalogs and coverage/evidence appendices. Do not repeat every chapter or invent business/domain claims. Optional curated diagrams use the same accepted components/relations contract as write tasks. All sections remain reviewable against original sources.

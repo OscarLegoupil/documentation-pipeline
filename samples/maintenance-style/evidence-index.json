@@ -1,0 +1,247 @@
+{
+  "evidence": {
+    "an-0251d63ddffdd14171ce.e1": {
+      "path": "README.md",
+      "hash": "fd3adce57e1adb63fbb8b1c961cc47a0563119ac885134a8e0cc4d9e5d0020d7",
+      "start": 1,
+      "end": 6,
+      "id": "an-0251d63ddffdd14171ce.e1",
+      "snippet": "# Synthetic ledger fixture\n\nThis is hand-authored testing material, not an application to install or execute.\nAccount.debit uses integer units, returns the new balance, and rejects non-positive\nor insufficient withdrawals. No persistence or concurrency guarantee is declared.\nThe declared test command is `python -m pytest`; the documentation tool reads it only."
+    },
+    "an-0251d63ddffdd14171ce.e2": {
+      "path": "ledger.py",
+      "hash": "efeb1fecf56847ccb85a9de925a6cd568ec6ae53af0830bfe149f8fe7a488022",
+      "start": 1,
+      "end": 15,
+      "id": "an-0251d63ddffdd14171ce.e2",
+      "snippet": "\"\"\"Synthetic test fixture: bounded account transfer, no external dependencies.\"\"\"\nfrom dataclasses import dataclass\n\n\n@dataclass\nclass Account:\n    balance: int\n\n    def debit(self, amount: int) -> int:\n        if amount <= 0:\n            raise ValueError(\"amount must be positive\")\n        if amount > self.balance:\n            raise ValueError(\"insufficient balance\")\n        self.balance -= amount\n        return self.balance"
+    },
+    "an-0251d63ddffdd14171ce.e3": {
+      "path": "pyproject.toml",
+      "hash": "1dd02168ebfd64a48ea34ddb1e13ae566795d3363ab644794c101aa05cba592c",
+      "start": 1,
+      "end": 7,
+      "id": "an-0251d63ddffdd14171ce.e3",
+      "snippet": "[project]\nname = \"fixture-ledger\"\nversion = \"0.0.0\"\nrequires-python = \">=3.11\"\n\n[tool.pytest.ini_options]\ntestpaths = [\"tests\"]"
+    },
+    "an-0251d63ddffdd14171ce.e4": {
+      "path": "tests/test_ledger.py",
+      "hash": "69ee04549945e7cc714ccb9d2e60d42ca395167532ee7d5781c010d95bb2711d",
+      "start": 1,
+      "end": 10,
+      "id": "an-0251d63ddffdd14171ce.e4",
+      "snippet": "\"\"\"Fixture test source; the documentation pipeline must not run it.\"\"\"\nimport pytest\nfrom ledger import Account\n\n\ndef test_failure_preserves_balance():\n    account = Account(10)\n    with pytest.raises(ValueError, match=\"insufficient balance\"):\n        account.debit(11)\n    assert account.balance == 10"
+    }
+  },
+  "facts": {
+    "an-0251d63ddffdd14171ce.f1": {
+      "id": "an-0251d63ddffdd14171ce.f1",
+      "type": "responsibility",
+      "statement": "The README identifies hand-authored synthetic fixture material and describes documentation intent; it is not proof of executed behavior.",
+      "status": "observed",
+      "basis": "documentation",
+      "evidence": [
+        "an-0251d63ddffdd14171ce.e1"
+      ],
+      "explanation": "Hand-authored expected fixture fact, verified mechanically against exact source range; no execution claim.",
+      "conflicts": []
+    },
+    "an-0251d63ddffdd14171ce.f2": {
+      "id": "an-0251d63ddffdd14171ce.f2",
+      "type": "interface",
+      "statement": "Account.debit(amount: int) returns the remaining integer balance; it raises ValueError before mutation for non-positive amounts or insufficient balance.",
+      "status": "observed",
+      "basis": "implementation",
+      "evidence": [
+        "an-0251d63ddffdd14171ce.e2"
+      ],
+      "explanation": "Hand-authored expected fixture fact, verified mechanically against exact source range; no execution claim.",
+      "conflicts": []
+    },
+    "an-0251d63ddffdd14171ce.f3": {
+      "id": "an-0251d63ddffdd14171ce.f3",
+      "type": "configuration",
+      "statement": "The fixture declares Python >=3.11 and pytest discovery under tests.",
+      "status": "observed",
+      "basis": "declaration",
+      "evidence": [
+        "an-0251d63ddffdd14171ce.e3"
+      ],
+      "explanation": "Hand-authored expected fixture fact, verified mechanically against exact source range; no execution claim.",
+      "conflicts": []
+    },
+    "an-0251d63ddffdd14171ce.f4": {
+      "id": "an-0251d63ddffdd14171ce.f4",
+      "type": "failure",
+      "statement": "The test expects an insufficient withdrawal to raise ValueError and preserve balance 10. This test was read, not run.",
+      "status": "observed",
+      "basis": "test-expectation",
+      "evidence": [
+        "an-0251d63ddffdd14171ce.e4"
+      ],
+      "explanation": "Hand-authored expected fixture fact, verified mechanically against exact source range; no execution claim.",
+      "conflicts": []
+    }
+  },
+  "relations": {
+    "an-0251d63ddffdd14171ce.r1": {
+      "id": "an-0251d63ddffdd14171ce.r1",
+      "source": "tests/test_ledger.py",
+      "target": "ledger.py",
+      "type": "import",
+      "status": "observed",
+      "label": "Declared import",
+      "facts": [
+        "an-0251d63ddffdd14171ce.f4"
+      ]
+    }
+  },
+  "blocks": {
+    "wr-8125777818bda6ba96d8.context": {
+      "id": "wr-8125777818bda6ba96d8.context",
+      "markdown": "## Where it fits\n\nThe fixture library owns the balance mutation boundary. [source](fact:an-0251d63ddffdd14171ce.f2)\n\n## Inputs\n\n| Input | Type / Shape | Source | When | Evidence |\n|---|---|---|---|---|\n| amount | positive integer | caller | debit invocation | [source](fact:an-0251d63ddffdd14171ce.f2) |\n\n## Outputs\n\n| Output | Type / Shape | Destination | When | Evidence |\n|---|---|---|---|---|\n| remaining balance | integer | caller | accepted debit | [source](fact:an-0251d63ddffdd14171ce.f2) |\n| ValueError | exception | caller | invalid or insufficient amount | [source](fact:an-0251d63ddffdd14171ce.f2) |",
+      "facts": [
+        "an-0251d63ddffdd14171ce.f2"
+      ]
+    },
+    "wr-8125777818bda6ba96d8.b1": {
+      "id": "wr-8125777818bda6ba96d8.b1",
+      "markdown": "The README identifies hand-authored synthetic fixture material and describes documentation intent; it is not proof of executed behavior. [source](fact:an-0251d63ddffdd14171ce.f1)",
+      "facts": [
+        "an-0251d63ddffdd14171ce.f1"
+      ]
+    },
+    "wr-8125777818bda6ba96d8.b2": {
+      "id": "wr-8125777818bda6ba96d8.b2",
+      "markdown": "Account.debit(amount: int) returns the remaining integer balance; it raises ValueError before mutation for non-positive amounts or insufficient balance. [source](fact:an-0251d63ddffdd14171ce.f2)",
+      "facts": [
+        "an-0251d63ddffdd14171ce.f2"
+      ]
+    },
+    "wr-8125777818bda6ba96d8.b3": {
+      "id": "wr-8125777818bda6ba96d8.b3",
+      "markdown": "The fixture declares Python >=3.11 and pytest discovery under tests. [source](fact:an-0251d63ddffdd14171ce.f3)",
+      "facts": [
+        "an-0251d63ddffdd14171ce.f3"
+      ]
+    },
+    "wr-8125777818bda6ba96d8.b4": {
+      "id": "wr-8125777818bda6ba96d8.b4",
+      "markdown": "The test expects an insufficient withdrawal to raise ValueError and preserve balance 10. This test was read, not run. [source](fact:an-0251d63ddffdd14171ce.f4)",
+      "facts": [
+        "an-0251d63ddffdd14171ce.f4"
+      ]
+    },
+    "wr-8125777818bda6ba96d8.layout": {
+      "id": "wr-8125777818bda6ba96d8.layout",
+      "markdown": "## Interface details\n\nThe following layout fixture repeats a supported interface row to exercise multi-page tables; it is not additional application functionality. [source](fact:an-0251d63ddffdd14171ce.f2)\n\n| Case | Interface / path | Expected source behavior |\n|---|---|---|\n| Layout row 01 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 02 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 03 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 04 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 05 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 06 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 07 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 08 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 09 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 10 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 11 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 12 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 13 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 14 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 15 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 16 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 17 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 18 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 19 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 20 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 21 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 22 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 23 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 24 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 25 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 26 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 27 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 28 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 29 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 30 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 31 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 32 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 33 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 34 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 35 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 36 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 37 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 38 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 39 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 40 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 41 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 42 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 43 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 44 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 45 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 46 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 47 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 48 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 49 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 50 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 51 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 52 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 53 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 54 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |\n| Layout row 55 | `Account.debit` | Reject non-positive amount. [source](fact:an-0251d63ddffdd14171ce.f2) |",
+      "facts": [
+        "an-0251d63ddffdd14171ce.f2"
+      ]
+    },
+    "wr-8125777818bda6ba96d8.unicode": {
+      "id": "wr-8125777818bda6ba96d8.unicode",
+      "markdown": "## Interface details\n\nLayout sample typography: résumé, Київ, Δstate, → output. Long path example: `samples/very_long_repository_component_name/maintenance_contracts/repeated_interface_example.py`. This sentence is fixture presentation data alongside the supported debit signature. [source](fact:an-0251d63ddffdd14171ce.f2)\n\n```python\ndef debit(self, amount: int) -> int:\n    # Source interface; do not execute during documentation.\n    ...\n```",
+      "facts": [
+        "an-0251d63ddffdd14171ce.f2"
+      ]
+    },
+    "sy-64f6ed05ac15d38ea38d.b1": {
+      "id": "sy-64f6ed05ac15d38ea38d.b1",
+      "markdown": "The README identifies hand-authored synthetic fixture material and describes documentation intent; it is not proof of executed behavior. [source](fact:an-0251d63ddffdd14171ce.f1)",
+      "facts": [
+        "an-0251d63ddffdd14171ce.f1"
+      ]
+    },
+    "sy-64f6ed05ac15d38ea38d.b2": {
+      "id": "sy-64f6ed05ac15d38ea38d.b2",
+      "markdown": "Account.debit(amount: int) returns the remaining integer balance; it raises ValueError before mutation for non-positive amounts or insufficient balance. [source](fact:an-0251d63ddffdd14171ce.f2)",
+      "facts": [
+        "an-0251d63ddffdd14171ce.f2"
+      ]
+    }
+  },
+  "diagrams": {
+    "wr-8125777818bda6ba96d8.d1": {
+      "id": "wr-8125777818bda6ba96d8.d1",
+      "subsystem": "ledger",
+      "title": "Fixture dependency context",
+      "purpose": "dependency",
+      "caption": "The test source imports the account implementation; an import does not prove a runtime execution.",
+      "nodes": [
+        {
+          "id": "source",
+          "component": "tests/test_ledger.py",
+          "label": "Test expectations",
+          "kind": "component",
+          "facts": [
+            "an-0251d63ddffdd14171ce.f4"
+          ]
+        },
+        {
+          "id": "target",
+          "component": "ledger.py",
+          "label": "Account interface",
+          "kind": "component",
+          "facts": [
+            "an-0251d63ddffdd14171ce.f4"
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "source": "source",
+          "target": "target",
+          "relation": "an-0251d63ddffdd14171ce.r1",
+          "label": "imports",
+          "step": 0
+        }
+      ],
+      "facts": [
+        "an-0251d63ddffdd14171ce.f4"
+      ]
+    }
+  },
+  "ownership": {
+    "re-c1a382ceb05703d84465.owner-d82ab49f91a6": {
+      "id": "re-c1a382ceb05703d84465.owner-d82ab49f91a6",
+      "path": "README.md",
+      "subsystem": "ledger",
+      "reason": "Primary placement supported by the fixture's explicit source responsibilities.",
+      "facts": [
+        "an-0251d63ddffdd14171ce.f1"
+      ],
+      "unresolved": false
+    },
+    "re-c1a382ceb05703d84465.owner-5d6b1c506c15": {
+      "id": "re-c1a382ceb05703d84465.owner-5d6b1c506c15",
+      "path": "ledger.py",
+      "subsystem": "ledger",
+      "reason": "Primary placement supported by the fixture's explicit source responsibilities.",
+      "facts": [
+        "an-0251d63ddffdd14171ce.f2"
+      ],
+      "unresolved": false
+    },
+    "re-c1a382ceb05703d84465.owner-9c6cd9431da5": {
+      "id": "re-c1a382ceb05703d84465.owner-9c6cd9431da5",
+      "path": "pyproject.toml",
+      "subsystem": "ledger",
+      "reason": "Primary placement supported by the fixture's explicit source responsibilities.",
+      "facts": [
+        "an-0251d63ddffdd14171ce.f3"
+      ],
+      "unresolved": false
+    },
+    "re-c1a382ceb05703d84465.owner-b17605f372b6": {
+      "id": "re-c1a382ceb05703d84465.owner-b17605f372b6",
+      "path": "tests/test_ledger.py",
+      "subsystem": "ledger",
+      "reason": "Primary placement supported by the fixture's explicit source responsibilities.",
+      "facts": [
+        "an-0251d63ddffdd14171ce.f4"
+      ],
+      "unresolved": false
+    }
+  }
+}

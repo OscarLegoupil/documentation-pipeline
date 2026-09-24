@@ -1,0 +1,9 @@
+.venv/
+.tools/
+__pycache__/
+*.pyc
+.docgen/
+tests/.work/
+*.tmp
+.github/skills/generate-documentation/.venv/
+.github/skills/generate-documentation/.setup.json

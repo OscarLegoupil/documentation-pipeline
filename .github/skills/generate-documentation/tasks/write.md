@@ -1,0 +1,11 @@
+# Write bounded chapter sections · version 1
+
+Use only accepted facts in the packet and explicitly retrieved accepted facts/original evidence. Output sections and diagram specifications, plus a concise summary retaining important fact IDs. Each section has an ID, the assigned subsystem slug, a title, and blocks with ID, Markdown, and fact IDs. All assigned facts must be represented in concise prose, a factual row or a component-index note. Large subsystems have multiple bounded parts; part 1 introduces its architecture context.
+
+Use [chapter template](../templates/chapter.md) as a maintenance-oriented guide, omitting inapplicable topics with a brief evidence-backed explanation. Begin each subsystem with where it fits and concrete input/output tables, then focused responsibilities, interfaces and workflows. Preserve failure/retry/lifecycle/concurrency details when evidenced. Make configuration and supported build/test/deploy instructions usable while distinguishing declared commands from executed validation. Never run those commands yourself.
+
+Every substantive Markdown paragraph/list item and every factual table row must carry `[source](fact:EXACT_FACT_ID)` markers. Set the block's facts array to exactly those IDs. A source note may cover closely related claims, not unrelated paragraphs. Code blocks may accompany the same cited explanation. Headings need no marker. Do not use raw HTML/LaTeX, images, footnotes, URLs, invented citation syntax or template placeholders. Internal links need supported explicit destinations. Citations are transformed structurally through Pandoc.
+
+Diagrams are optional structured specifications, never raw DOT/Mermaid. Reference accepted eligible component paths (or explicit external endpoints), accepted typed relation IDs and fact IDs. Use short labels, usually 5–9 nodes, at most configured max_nodes. Curate one purpose/view. Split dense diagrams; no giant union of all edges. For temporal detail use ordered-flow, unique steps 1..N and meaningful interaction labels. Inferred/unknown edges retain their status. An isolated utility may need no diagram. Avoid duplicate diagrams across chapter parts.
+
+If repairing, address only supplied findings, preserve supported details and IDs when possible, and return the full revised artifact. Do not add claims just to fill sections.

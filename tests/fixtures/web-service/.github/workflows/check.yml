@@ -1,0 +1,7 @@
+name: Fixture declaration only
+on: [push]
+jobs:
+  source-check:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "This fixture has no installed runtime"

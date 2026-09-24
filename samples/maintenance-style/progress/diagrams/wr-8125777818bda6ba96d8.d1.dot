@@ -1,0 +1,8 @@
+digraph view {
+graph [rankdir=TB, bgcolor="white", pad=0.15, nodesep=0.4, ranksep=0.55];
+node [fontname="Arial", fontsize=14, style="rounded,filled", fillcolor="#E8F3F3", color="#007F82", margin="0.14,0.10"];
+edge [fontname="Arial", fontsize=14, color="#17324D", arrowsize=0.8];
+"source" [label="Test expectations", shape=box];
+"target" [label="Account interface", shape=box];
+"source" -> "target" [label="imports [import]", style=solid];
+}

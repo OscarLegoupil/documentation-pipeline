@@ -1,0 +1,12 @@
+# Fixture declaration, not evidence of any deployed resource name.
+resources:
+  OrderStore:
+    type: logical-storage
+    retention_days: 7
+routes:
+  - method: POST
+    path: /orders
+    handler: service/routes.postOrder
+  - method: POST
+    path: /replay
+    handler: missing.dynamicHandler

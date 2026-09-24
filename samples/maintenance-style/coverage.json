@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "valid": true,
+  "integrity_valid": true,
+  "issues": [],
+  "coverage": {
+    "scope_id": "scope-88ef4ba96d010546",
+    "snapshot": "0052a12dae50179afd966c893556492f64f00c56062b570a6f5fc375854d88d3",
+    "state": "C:\\Users\\oscar\\AppData\\Local\\Temp\\docgen sample ü hjte16k0\\.docgen\\runs\\scope-88ef4ba96d010546",
+    "task_counts": {
+      "accepted": 7
+    },
+    "pipeline_complete": true,
+    "inventory_entries": 8,
+    "eligible_files": 4,
+    "inventory_file_records": 5,
+    "directory_exclusion_records": 3,
+    "freshness_notice": "Task completion describes the recorded snapshot; run validate to recheck current sources, additions and dependencies.",
+    "eligible_lines": 38,
+    "excluded_or_unavailable_entries": {
+      "excluded-directory": 3,
+      "excluded": 1
+    },
+    "planned_ranges": {
+      "source_lines": 38,
+      "covered_lines": 38,
+      "empty_files": 0,
+      "covered_empty_files": 0,
+      "missing_files": [],
+      "missing_file_count": 0,
+      "missing_files_are_sample": false
+    },
+    "delivered_ranges": {
+      "source_lines": 38,
+      "covered_lines": 38,
+      "empty_files": 0,
+      "covered_empty_files": 0,
+      "missing_files": [],
+      "missing_file_count": 0,
+      "missing_files_are_sample": false
+    },
+    "accepted_analysis_ranges": {
+      "source_lines": 38,
+      "covered_lines": 38,
+      "empty_files": 0,
+      "covered_empty_files": 0,
+      "missing_files": [],
+      "missing_file_count": 0,
+      "missing_files_are_sample": false
+    },
+    "accepted_analysis_packets": 1,
+    "analysis_packet_denominator": 1,
+    "indexed_files": 4,
+    "unresolved_owners": 0,
+    "owner_denominator": 4,
+    "accepted_blocks_and_diagrams": 10,
+    "semantically_reviewed": 10,
+    "review_denominator": 10,
+    "represented_facts": 4,
+    "fact_denominator": 4,
+    "unknown_facts": 0,
+    "fresh_context_reviews": 0,
+    "same_context_reviews": 2,
+    "blocking_findings": 0,
+    "redacted_lines": 0,
+    "visual_qa": "rendered-images-await-inspection",
+    "human_approval": "not-assigned",
+    "build": {
+      "docx": "C:\\Users\\oscar\\AppData\\Local\\Temp\\docgen sample ü hjte16k0\\docs\\generated\\scope-88ef4ba96d010546\\progress-build-qg6xj2k6\\documentation-progress.docx",
+      "visual_qa": "rendered-images-await-inspection"
+    },
+    "progress_preview": {
+      "docx": "C:\\Users\\oscar\\AppData\\Local\\Temp\\docgen sample ü hjte16k0\\docs\\generated\\scope-88ef4ba96d010546\\documentation-progress.docx",
+      "directory": "C:\\Users\\oscar\\AppData\\Local\\Temp\\docgen sample ü hjte16k0\\docs\\generated\\scope-88ef4ba96d010546\\progress-build-qg6xj2k6",
+      "docx_hash": "5d5ad6449f693c49ad9e32e35126fdb4c614546371b72dc1364946db4baec52d",
+      "fingerprint": "686601788f0d0e24017ed48f9a0b4a7d40f53b05c9dc15c453736fbddd29966b",
+      "snapshot": "0052a12dae50179afd966c893556492f64f00c56062b570a6f5fc375854d88d3",
+      "current": true,
+      "subsystems": {
+        "completed": 1,
+        "pending": 0,
+        "blocked": 0
+      },
+      "visual_qa": "pending",
+      "human_approval": "not-assigned"
+    },
+    "progress_error": null,
+    "resume": "/generate-documentation"
+  },
+  "limits": [
+    "Delivered/accepted ranges do not prove understanding of every line.",
+    "Citations and matching hashes do not establish semantic entailment.",
+    "Semantic review is a Copilot judgment, not an automated proof.",
+    "Redaction is heuristic and can miss secrets; review repository sensitivity first.",
+    "Tests were read as source; target code was never run by this toolkit.",
+    "Human approval is never assigned by the engine."
+  ]
+}

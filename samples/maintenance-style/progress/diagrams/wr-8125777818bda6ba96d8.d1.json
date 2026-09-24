@@ -1,0 +1,39 @@
+{
+  "id": "wr-8125777818bda6ba96d8.d1",
+  "subsystem": "ledger",
+  "title": "Fixture dependency context",
+  "purpose": "dependency",
+  "caption": "The test source imports the account implementation; an import does not prove a runtime execution.",
+  "nodes": [
+    {
+      "id": "source",
+      "component": "tests/test_ledger.py",
+      "label": "Test expectations",
+      "kind": "component",
+      "facts": [
+        "an-0251d63ddffdd14171ce.f4"
+      ]
+    },
+    {
+      "id": "target",
+      "component": "ledger.py",
+      "label": "Account interface",
+      "kind": "component",
+      "facts": [
+        "an-0251d63ddffdd14171ce.f4"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "source",
+      "target": "target",
+      "relation": "an-0251d63ddffdd14171ce.r1",
+      "label": "imports",
+      "step": 0
+    }
+  ],
+  "facts": [
+    "an-0251d63ddffdd14171ce.f4"
+  ]
+}

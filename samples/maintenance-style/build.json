@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "snapshot": "0052a12dae50179afd966c893556492f64f00c56062b570a6f5fc375854d88d3",
+  "partial": false,
+  "validation": true,
+  "docx_checks": {
+    "bookmarks": 18,
+    "internal_hyperlinks": 78,
+    "tables": 6,
+    "repeating_headers": 6,
+    "embedded_images": 1,
+    "drawings": 1,
+    "headings": 13,
+    "missing_bookmarks": []
+  },
+  "diagrams": {
+    "wr-8125777818bda6ba96d8.d1": {
+      "id": "wr-8125777818bda6ba96d8.d1",
+      "png": "diagrams/wr-8125777818bda6ba96d8.d1.png",
+      "svg": "diagrams/wr-8125777818bda6ba96d8.d1.svg",
+      "width_inches": 2.4722222222222223,
+      "effective_font_pt": 14.0,
+      "pixels": [
+        495,
+        415
+      ],
+      "visual_review": "pending"
+    }
+  },
+  "visual_qa": "all-pages-inspected",
+  "human_approval": "not-assigned",
+  "pandoc": "pandoc 3.11",
+  "files": {
+    "coverage.json": "e7375fd249f7b3109a9513c1e12b2b78606edec2fdd7476c784c7a07b48ef002",
+    "document.ast.json": "f70ef1240ebf5babc41e649058e42d3f83c3fb906459e3bf8976b7d7ac689118",
+    "documentation.docx": "b8ad336620b0c8794c956115c39f1e2bfce3780c5da0d13a4418ea8c80f82fab",
+    "documentation.md": "e2b1e65113df4245490b05625d392503e2f3d0d70db44381842ea0da6329eb1d",
+    "evidence-index.json": "aeab5cc8c697eaf1770b7fd9ac5c8b25a49a320226170f66785f41cf496be1c2",
+    "heading-map.json": "bce0b5e23402fbd8b0e0798c07907251c2f50edfaa5ced3a011ebe5e6d253c94",
+    "QUALITY.md": "00422766d5d320b410820dc2d486c7ba64d8b48456667b2b1c15b462bf8e37c9",
+    "reference.docx": "057e534cbc0783cd44f326438cc787dfb201baf8443946d690e6d31452482188",
+    "diagrams/wr-8125777818bda6ba96d8.d1.dot": "6c719ee199b02cb71e8c4b50406095463752e357785796b8a78abacac8fee6ca",
+    "diagrams/wr-8125777818bda6ba96d8.d1.json": "c63d4a312f1fac182b6ec1b30fc256796a4e98f55402a0f441a820b832a6401d",
+    "diagrams/wr-8125777818bda6ba96d8.d1.png": "cae73caf97932d0367754834ece416726479c00a2859f92fccd4e36810785a83",
+    "diagrams/wr-8125777818bda6ba96d8.d1.svg": "b361ca5571ad1e76a68c4dfd5f7ae2dc18cc8d356032740b9f7ca914b3d5823e"
+  },
+  "layout_review": {
+    "docx_hash": "b8ad336620b0c8794c956115c39f1e2bfce3780c5da0d13a4418ea8c80f82fab",
+    "pages": [
+      "page-001.png",
+      "page-002.png",
+      "page-003.png",
+      "page-004.png",
+      "page-005.png",
+      "page-006.png",
+      "page-007.png",
+      "page-008.png"
+    ],
+    "rendered": true,
+    "image_review": "all-pages-inspected",
+    "human_approval": "not-assigned",
+    "inspected_pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "reviewer": "build-agent",
+    "notes": "All eight final page images inspected. Readable cover, linked contents, headings, tables with repeated headers, Unicode, long paths, code, diagram and evidence notes; no visible clipping or overlap. Incremental sample also has a clear Incomplete draft label and subsystem progress page. LibreOffice rendering; human approval not assigned."
+  }
+}

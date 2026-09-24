@@ -1,0 +1,32 @@
+[
+  {
+    "level": 1,
+    "bookmark": "subsystem-progress",
+    "text": "1 Subsystem progress"
+  },
+  {
+    "level": 1,
+    "bookmark": "subsystem-ledger",
+    "text": "2 Ledger"
+  },
+  {
+    "level": 2,
+    "bookmark": "wr-8125777818bda6ba96d8.s1",
+    "text": "2.1 Maintenance context"
+  },
+  {
+    "level": 2,
+    "bookmark": "index-ledger",
+    "text": "2.2 Component index"
+  },
+  {
+    "level": 1,
+    "bookmark": "coverage",
+    "text": "3 Knowledge gaps and coverage"
+  },
+  {
+    "level": 1,
+    "bookmark": "evidence-references",
+    "text": "4 Evidence references"
+  }
+]

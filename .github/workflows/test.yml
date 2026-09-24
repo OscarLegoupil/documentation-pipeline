@@ -1,0 +1,44 @@
+name: Deterministic toolkit acceptance
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  core:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.11', '3.13']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python .github/skills/generate-documentation/setup.py
+      - run: python tools/test.py core
+  rendering:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Explicit local rendering prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y graphviz libreoffice-writer poppler-utils fonts-crosextra-carlito fonts-dejavu-core
+          curl -fL https://github.com/jgm/pandoc/releases/download/3.11/pandoc-3.11-linux-amd64.tar.gz -o /tmp/pandoc.tar.gz
+          mkdir -p .tools/pandoc
+          tar -xzf /tmp/pandoc.tar.gz -C .tools/pandoc --strip-components=1
+          echo "$GITHUB_WORKSPACE/.tools/pandoc/bin" >> "$GITHUB_PATH"
+      - run: python .github/skills/generate-documentation/setup.py --preview
+      - run: python tools/test.py integration
+      - run: python tools/test.py smoke
+      - run: python tools/package.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: local-document-rendering-and-release
+          path: |
+            samples/maintenance-style/
+            releases/

@@ -1,0 +1,18 @@
+{
+  "subsystems": [
+    {
+      "subsystem": "ledger",
+      "status": "completed",
+      "reason": ""
+    }
+  ],
+  "completed": [
+    "ledger"
+  ],
+  "writers": [
+    "wr-8125777818bda6ba96d8"
+  ],
+  "reviews": [
+    "re-103f42823ba80ea9b4b0"
+  ]
+}

@@ -1,0 +1,27 @@
+scope = ["."]
+exclude = []
+prune_dirs = ["node_modules", "vendor", ".venv", "venv", "__pycache__", ".pytest_cache", ".mypy_cache", ".ruff_cache", "dist", "build", "target", ".next", ".cache", "coverage", ".tools"]
+exclude_generated_headers = true
+title = ""
+language = "en"
+audience = "developer maintenance"
+state_dir = ".docgen"
+output_dir = "docs/generated"
+source_tokens = 8000
+packet_tokens = 12000
+result_tokens = 6000
+summary_tokens = 800
+max_nodes = 9
+repair_cycles = 2
+timeout = 90
+
+[branding]
+navy = "17324D"
+teal = "007F82"
+logo = ""
+
+[executables]
+pandoc = ""
+dot = ""
+soffice = ""
+pdftoppm = ""
